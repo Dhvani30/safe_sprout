@@ -56,8 +56,8 @@ class GradientContainer extends StatelessWidget {
                       side: BorderSide(
                           color: Colors.black, width: 2), // Black border
                     ),
+                    backgroundColor: Color.fromARGB(255, 255, 255, 255),
                     padding: EdgeInsets.fromLTRB(30, 15, 30, 15),
-                    primary: Color.fromARGB(255, 255, 255, 255),
                     textStyle: GoogleFonts.comfortaa(
                       textStyle: TextStyle(
                         fontSize: 20,
@@ -80,8 +80,8 @@ class GradientContainer extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20.0),
                       side: BorderSide(color: Colors.black, width: 2),
                     ),
+                    backgroundColor: Color.fromARGB(255, 255, 255, 255),
                     padding: EdgeInsets.fromLTRB(30, 15, 30, 15),
-                    primary: Color.fromARGB(255, 255, 255, 255),
                     textStyle: GoogleFonts.comfortaa(
                       textStyle: TextStyle(
                         fontSize: 20,
@@ -147,8 +147,8 @@ class LoginPage extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.0),
                   ),
-                  padding: EdgeInsets.all(15),
-                  primary: Colors.black, // Button color
+                  backgroundColor: Colors.black,
+                  padding: EdgeInsets.all(15), // Button color
                   textStyle: TextStyle(
                     color: Colors.white, // Text color
                     fontSize: 20,
@@ -227,8 +227,8 @@ class RegisterPage extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.0),
                     ),
-                    padding: EdgeInsets.all(15),
-                    primary: Colors.black, // Button color
+                    backgroundColor: Colors.black,
+                    padding: EdgeInsets.all(15), // Button color
                     textStyle: TextStyle(
                       color: Colors.white, // Text color
                       fontSize: 20,
