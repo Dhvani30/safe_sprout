@@ -16,6 +16,8 @@ class _EMagazineState extends State<EMagazine> {
   final Dio dio = Dio();
 
   List<Article> articles = [];
+  double defaultImageHeight = 250;
+  double defaultImageWidth = 100;
 
   @override
   void initState() {
@@ -44,20 +46,43 @@ class _EMagazineState extends State<EMagazine> {
         // Format the published date to IST
         String formattedDateTime = _convertToIST(article.publishedAt ?? "");
 
-        // Check if the article's image URL is not available or contains [object ProgressEvent]
-        if (article.urlToImage == null ||
-            article.urlToImage!.contains('ProgressEvent')) {
-          return ListTile(
+        return Container(
+          margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+          padding: EdgeInsets.all(8.0),
+          decoration: BoxDecoration(
+            color: Color.fromARGB(255, 215, 202, 232),
+            borderRadius: BorderRadius.circular(10.0),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 2,
+                blurRadius: 5,
+                offset: Offset(0, 3), // changes position of shadow
+              ),
+            ],
+          ),
+          child: ListTile(
             onTap: () {
-              _launchUrl(
-                Uri.parse(article.url ?? ""),
-              );
+              _launchUrl(Uri.parse(article.url ?? ""));
             },
-            leading: Image.asset(
-              DEFAULT_IMAGE_PATH,
-              height: 250,
-              width: 100,
-              fit: BoxFit.cover,
+            leading: SizedBox(
+              height: defaultImageHeight,
+              width: defaultImageWidth,
+              child: Image.network(
+                article.urlToImage ?? PLACEHOLDER_IMAGE_LINK,
+                height: defaultImageHeight,
+                width: defaultImageWidth,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  // Display a placeholder image or error message
+                  return Image.asset(
+                    DEFAULT_IMAGE_PATH,
+                    height: defaultImageHeight,
+                    width: defaultImageWidth,
+                    fit: BoxFit.cover,
+                  ); // Placeholder image
+                },
+              ),
             ),
             title: Text(
               article.title ?? "",
@@ -65,39 +90,15 @@ class _EMagazineState extends State<EMagazine> {
             subtitle: Text(
               formattedDateTime, // Display formatted date
             ),
-          );
-        } else {
-          return ListTile(
-            onTap: () {
-              _launchUrl(
-                Uri.parse(article.url ?? ""),
-              );
-            },
-            leading: Image.network(
-              article.urlToImage ?? PLACEHOLDER_IMAGE_LINK,
-              height: 250,
-              width: 100,
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) {
-                // Display a placeholder image or error message
-                return Image.asset(DEFAULT_IMAGE_PATH); // Placeholder image
-              },
-            ),
-            title: Text(
-              article.title ?? "",
-            ),
-            subtitle: Text(
-              formattedDateTime, // Display formatted date
-            ),
-          );
-        }
+          ),
+        );
       },
     );
   }
 
   Future<void> _getNews() async {
     final response = await dio.get(
-        "https://newsapi.org/v2/everything?q=women%20safety%20campus%20OR%20women%27s%20safety%20OR%20self-defense%20OR%20laws%20for%20women%20OR%20tips%20for%20safety%20OR%20sexual%20harassment%20OR%20safe%20travel%20OR%20violence%20laws%20OR%20rights%20advocacy%20OR%20work%20safety%20OR%20community%20support%20OR%20domestic%20abuse%20OR%20legal%20help%20OR%20consent%20education%20OR%20tech%20safety%20OR%20public%20spaces&sortBy=popularity&apiKey=$NEWS_API_KEY");
+        "https://newsapi.org/v2/everything?q=women%20safety%20OR%20women%27s%20safety%20OR%20self-defense%20OR%20laws%20for%20women%20OR%20tips%20for%20safety%20OR%20sexual%20harassment%20OR%20safe%20travel%20OR%20violence%20laws%20OR%20rights%20advocacy%20OR%20community%20support%20OR%20domestic%20abuse%20OR%20legal%20help%20OR%20consent%20education%20OR%20tech%20safety%20OR%20public%20spaces%20OR%20female%20safety%20OR%20girl%20safety&sortBy=popularity&apiKey=$NEWS_API_KEY");
 
     final articlesJson = response.data["articles"] as List;
     setState(() {

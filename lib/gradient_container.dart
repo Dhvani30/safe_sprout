@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart'; // Import Google Fonts package
+import 'package:google_fonts/google_fonts.dart';
+import 'login_page.dart'; // Import LoginPage
+import 'register.dart'; // Import RegisterPage
 
 const startAlign = Alignment.topCenter;
 const endAlign = Alignment.bottomCenter;
@@ -23,28 +25,24 @@ class GradientContainer extends StatelessWidget {
       ),
       child: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const SizedBox(height: 300),
+            const SizedBox(height: 100),
             Text(
               'SafeSprout',
               style: GoogleFonts.comfortaa(
-                // Apply Google Fonts style
                 textStyle: TextStyle(
                   fontSize: 48,
-                  color: const Color.fromARGB(
-                      255, 0, 0, 0), // Change text color if needed
+                  color: const Color.fromARGB(255, 0, 0, 0),
                 ),
               ),
             ),
-            const SizedBox(
-              height: 300,
-            ),
+            const SizedBox(height: 50),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    // Navigate to the Login Page
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => LoginPage()),
@@ -53,23 +51,20 @@ class GradientContainer extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.0),
-                      side: BorderSide(
-                          color: Colors.black, width: 2), // Black border
+                      side: BorderSide(color: Colors.black, width: 2),
                     ),
-                    backgroundColor: Color.fromARGB(255, 255, 255, 255),
                     padding: EdgeInsets.fromLTRB(30, 15, 30, 15),
                     textStyle: GoogleFonts.comfortaa(
                       textStyle: TextStyle(
                         fontSize: 20,
-                        color: Colors.black, // Text color for LOG IN button
+                        color: Colors.black,
                       ),
                     ),
                   ),
-                  child: const Text('LOG IN'),
+                  child: Text('LOGIN'),
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    // Navigate to the Register Page
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => RegisterPage()),
@@ -80,165 +75,19 @@ class GradientContainer extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20.0),
                       side: BorderSide(color: Colors.black, width: 2),
                     ),
-                    backgroundColor: Color.fromARGB(255, 255, 255, 255),
                     padding: EdgeInsets.fromLTRB(30, 15, 30, 15),
                     textStyle: GoogleFonts.comfortaa(
                       textStyle: TextStyle(
                         fontSize: 20,
-                        color: Color.fromARGB(
-                            255, 0, 0, 0), // Text color for REGISTER button
+                        color: Colors.black,
                       ),
-                    ),
-                  ),
-                  child: const Text('REGISTER'),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class LoginPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Login',
-              style: GoogleFonts.comfortaa(
-                // Apply Google Fonts style
-                textStyle: TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            SizedBox(height: 20),
-            TextField(
-              decoration: InputDecoration(
-                labelText: 'Email',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            SizedBox(height: 20),
-            TextField(
-              obscureText: true,
-              decoration: InputDecoration(
-                labelText: 'Password',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            SizedBox(height: 20),
-            SizedBox(
-              width: double.infinity, // Set width to fill the horizontal space
-              child: ElevatedButton(
-                onPressed: () {
-                  // Add your login logic here
-                },
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  backgroundColor: Colors.black,
-                  padding: EdgeInsets.all(15), // Button color
-                  textStyle: TextStyle(
-                    color: Colors.white, // Text color
-                    fontSize: 20,
-                  ),
-                ),
-                child: Text('LOGIN'),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class RegisterPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: SingleChildScrollView(
-        // Wrap your content with SingleChildScrollView
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Register',
-                style: GoogleFonts.comfortaa(
-                  // Apply Google Fonts style
-                  textStyle: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              SizedBox(height: 20),
-              TextField(
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              SizedBox(height: 20),
-              TextField(
-                decoration: InputDecoration(
-                  labelText: 'College Code',
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              SizedBox(height: 20),
-              TextField(
-                decoration: InputDecoration(
-                  labelText: 'Enrollment Number',
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              SizedBox(height: 20),
-              TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                  labelText: 'Password',
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              SizedBox(height: 20),
-              SizedBox(
-                width:
-                    double.infinity, // Set width to fill the horizontal space
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Add your registration logic here
-                  },
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    backgroundColor: Colors.black,
-                    padding: EdgeInsets.all(15), // Button color
-                    textStyle: TextStyle(
-                      color: Colors.white, // Text color
-                      fontSize: 20,
                     ),
                   ),
                   child: Text('REGISTER'),
                 ),
-              ),
-            ],
-          ),
+              ],
+            ),
+          ],
         ),
       ),
     );
