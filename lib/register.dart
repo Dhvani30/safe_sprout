@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:dice_app/home_page.dart';
 
 class RegisterPage extends StatelessWidget {
   @override
@@ -51,7 +52,13 @@ class RegisterPage extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    // Navigate to the home page after registration
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => HomePage()),
+                    );
+                  },
                   child: Text('REGISTER'),
                 ),
               ),
