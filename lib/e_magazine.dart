@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:dice_app/modules/article.dart';
 import 'package:dice_app/modules/consts.dart';
-import 'package:intl/intl.dart'; // Import the intl package for date formatting
+import 'package:intl/intl.dart';
 
 class EMagazine extends StatefulWidget {
   const EMagazine({Key? key}) : super(key: key);

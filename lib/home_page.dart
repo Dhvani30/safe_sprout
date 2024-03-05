@@ -5,6 +5,8 @@ import 'package:dice_app/modules/survivor.dart';
 import 'package:dice_app/e_magazine.dart';
 
 class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,7 +14,7 @@ class HomePage extends StatelessWidget {
         title: Text(
           'Welcome Back!',
           style: GoogleFonts.comfortaa(
-            textStyle: TextStyle(
+            textStyle: const TextStyle(
               fontSize: 32,
               fontWeight: FontWeight.bold,
               color: Colors.black,
@@ -22,20 +24,21 @@ class HomePage extends StatelessWidget {
         backgroundColor: Colors.white,
       ),
       body: Container(
-        color: Color.fromARGB(255, 121, 80, 185), // Set black background color
+        color: const Color.fromARGB(
+            255, 121, 80, 185), // Set black background color
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 'Connected Accounts',
                 style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
                     color: Colors.white),
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   CircleAvatar(
@@ -63,29 +66,28 @@ class HomePage extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               Center(
                 child: ElevatedButton(
                   onPressed: () {
                     // Add your logic for SOS button
                   },
                   style: ElevatedButton.styleFrom(
-                    textStyle: TextStyle(color: Colors.black),
-                    backgroundColor: Color.fromARGB(255, 143, 29, 29),
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 100, vertical: 100),
-                    shape: CircleBorder(
+                    textStyle: const TextStyle(color: Colors.black),
+                    backgroundColor: const Color.fromARGB(255, 143, 29, 29),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 100, vertical: 100),
+                    shape: const CircleBorder(
                         side: BorderSide(
-                            width: 2,
-                            color: const Color.fromARGB(255, 0, 0, 0))),
+                            width: 2, color: Color.fromARGB(255, 0, 0, 0))),
                   ),
-                  child: Text(
+                  child: const Text(
                     'SOS',
                     style: TextStyle(color: Colors.white, fontSize: 24),
                   ),
                 ),
               ),
-              SizedBox(height: 40),
+              const SizedBox(height: 40),
               Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -94,60 +96,63 @@ class HomePage extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => EMagazine()),
+                          MaterialPageRoute(
+                              builder: (context) => const EMagazine()),
                         );
                         // Add your logic for e-Magazine button
                       },
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromARGB(255, 119, 55, 95),
-                          padding: EdgeInsets.symmetric(
+                          backgroundColor:
+                              const Color.fromARGB(255, 119, 55, 95),
+                          padding: const EdgeInsets.symmetric(
                               horizontal: 25, vertical: 10),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30),
-                            side: BorderSide(
-                              color: const Color.fromARGB(255, 213, 213, 213),
+                            side: const BorderSide(
+                              color: Color.fromARGB(255, 213, 213, 213),
                               width: 2,
                             ),
                           ),
-                          minimumSize: Size(2500.0, 0)),
+                          minimumSize: const Size(2500.0, 0)),
                       child: Text(
                         'E-Magazine',
                         style: GoogleFonts.comfortaa(
-                          textStyle: TextStyle(
+                          textStyle: const TextStyle(
                             color: Colors.black,
                             fontSize: 25,
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: () {
                         // Add your logic for Friend Locator button
                       },
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromARGB(255, 119, 55, 95),
-                          padding: EdgeInsets.symmetric(
+                          backgroundColor:
+                              const Color.fromARGB(255, 119, 55, 95),
+                          padding: const EdgeInsets.symmetric(
                               horizontal: 25, vertical: 10),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30),
-                            side: BorderSide(
+                            side: const BorderSide(
                               color: Color.fromARGB(255, 213, 213, 213),
                               width: 2,
                             ),
                           ),
-                          minimumSize: Size(2500.0, 0)),
+                          minimumSize: const Size(2500.0, 0)),
                       child: Text(
                         'Friend Locator',
                         style: GoogleFonts.comfortaa(
-                          textStyle: TextStyle(
+                          textStyle: const TextStyle(
                             color: Colors.black,
                             fontSize: 25,
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: () {
                         Navigator.push(
@@ -157,21 +162,22 @@ class HomePage extends StatelessWidget {
                         );
                       },
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromARGB(255, 119, 55, 95),
-                          padding: EdgeInsets.symmetric(
+                          backgroundColor:
+                              const Color.fromARGB(255, 119, 55, 95),
+                          padding: const EdgeInsets.symmetric(
                               horizontal: 25, vertical: 10),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30),
-                            side: BorderSide(
+                            side: const BorderSide(
                               color: Color.fromARGB(255, 213, 213, 213),
                               width: 2,
                             ),
                           ),
-                          minimumSize: Size(2500.0, 0)),
+                          minimumSize: const Size(2500.0, 0)),
                       child: Text(
                         'Survivor Stories',
                         style: GoogleFonts.comfortaa(
-                          textStyle: TextStyle(
+                          textStyle: const TextStyle(
                             color: Colors.black,
                             fontSize: 25,
                           ),
