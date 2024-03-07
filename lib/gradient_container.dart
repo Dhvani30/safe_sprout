@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'login_page.dart'; // Import LoginPage
-import 'register.dart'; // Import RegisterPage
+import 'modules/login_page.dart'; // Import LoginPage
+import 'modules/register.dart'; // Import RegisterPage
 
 const startAlign = Alignment.topCenter;
 const endAlign = Alignment.bottomCenter;

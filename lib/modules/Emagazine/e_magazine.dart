@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:dice_app/modules/article.dart';
-import 'package:dice_app/modules/consts.dart';
+import 'package:dice_app/modules/Emagazine/article.dart';
+import 'package:dice_app/modules/Emagazine/consts.dart';
 import 'package:intl/intl.dart';
 
 class EMagazine extends StatefulWidget {

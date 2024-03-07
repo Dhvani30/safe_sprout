@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:dice_app/home_page.dart';
+import 'package:dice_app/modules/home_page.dart';
 
 class RegisterPage extends StatelessWidget {
   @override
