@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:dice_app/gradient_container.dart';
-import 'package:dice_app/modules/Emagazine/e_magazine.dart';
 
 void main() {
   runApp(
