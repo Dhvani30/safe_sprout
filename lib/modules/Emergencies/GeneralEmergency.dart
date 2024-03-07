@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class PoliceEmergency extends StatelessWidget {
+class GeneralEmergency extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -25,9 +25,9 @@ class PoliceEmergency extends StatelessWidget {
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                       colors: [
-                        Color.fromARGB(255, 250, 187, 208),
-                        Color.fromARGB(255, 252, 220, 207),
-                        Color.fromARGB(255, 254, 240, 208),
+                        Color.fromARGB(255, 255, 214, 245),
+                        Color.fromARGB(255, 218, 173, 216),
+                        Color.fromARGB(255, 228, 178, 234),
                       ],
                     ),
                   ),
@@ -42,7 +42,7 @@ class PoliceEmergency extends StatelessWidget {
                             radius: 25,
                             backgroundColor: Colors.white.withOpacity(0.5),
                             child: Image.asset(
-                              'assets/images/army.png',
+                              'assets/images/alert.png',
                             ),
                           ),
                         ),
@@ -53,7 +53,7 @@ class PoliceEmergency extends StatelessWidget {
                             // mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "Police Emergency",
+                                "General Emergency",
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
@@ -63,7 +63,7 @@ class PoliceEmergency extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                "Call 100 for police emergencies",
+                                "Call 112 for any emergency",
                                 style: TextStyle(
                                   color: Colors.white,
                                   overflow: TextOverflow.visible,
@@ -80,7 +80,7 @@ class PoliceEmergency extends StatelessWidget {
                                 ),
                                 child: Center(
                                   child: Text(
-                                    "1-0-0",
+                                    "1-1-2",
                                     style: TextStyle(
                                       color: Color.fromARGB(255, 128, 144, 168),
                                       fontWeight: FontWeight.bold,

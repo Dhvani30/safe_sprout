@@ -1,7 +1,8 @@
 import 'package:dice_app/modules/Emergencies/AmbulanceEmergency.dart';
-import 'package:dice_app/modules/Emergencies/ArmyEmergency.dart';
-import 'package:dice_app/modules/Emergencies/FirebrigadeEmergency.dart';
 import 'package:dice_app/modules/Emergencies/PoliceEmergency.dart';
+import 'package:dice_app/modules/Emergencies/FirebrigadeEmergency.dart';
+import 'package:dice_app/modules/Emergencies/GeneralEmergency.dart';
+import 'package:dice_app/modules/Emergencies/WomenEmergency.dart';
 import 'package:flutter/material.dart';
 
 class Emergency extends StatelessWidget {
@@ -16,10 +17,11 @@ class Emergency extends StatelessWidget {
         physics: BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         children: [
+          WomenEmergency(),
           PoliceEmergency(),
           AmbulanceEmergency(),
           FirebrigadeEmergency(),
-          ArmyEmergency(),
+          GeneralEmergency(),
         ],
       ),
     );
