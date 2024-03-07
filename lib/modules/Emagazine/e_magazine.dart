@@ -4,6 +4,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:dice_app/modules/Emagazine/article.dart';
 import 'package:dice_app/modules/Emagazine/consts.dart';
 import 'package:intl/intl.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class EMagazine extends StatefulWidget {
   const EMagazine({Key? key}) : super(key: key);
@@ -68,20 +69,23 @@ class _EMagazineState extends State<EMagazine> {
             leading: SizedBox(
               height: defaultImageHeight,
               width: defaultImageWidth,
-              child: Image.network(
-                article.urlToImage ?? PLACEHOLDER_IMAGE_LINK,
+              child: CachedNetworkImage(
+                imageUrl: article.urlToImage ?? PLACEHOLDER_IMAGE_LINK,
+                placeholder: (context, url) => Image.asset(
+                  DEFAULT_IMAGE_PATH,
+                  height: defaultImageHeight,
+                  width: defaultImageWidth,
+                  fit: BoxFit.cover,
+                ),
+                errorWidget: (context, url, error) => Image.asset(
+                  DEFAULT_IMAGE_PATH,
+                  height: defaultImageHeight,
+                  width: defaultImageWidth,
+                  fit: BoxFit.cover,
+                ),
                 height: defaultImageHeight,
                 width: defaultImageWidth,
                 fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) {
-                  // Display a placeholder image or error message
-                  return Image.asset(
-                    DEFAULT_IMAGE_PATH,
-                    height: defaultImageHeight,
-                    width: defaultImageWidth,
-                    fit: BoxFit.cover,
-                  ); // Placeholder image
-                },
               ),
             ),
             title: Text(
