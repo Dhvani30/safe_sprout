@@ -23,7 +23,12 @@ class AmbulanceEmergency extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: InkWell(
-                  onTap: () => callNumber('18'),
+                  onTap: () {
+                    // Provide haptic feedback when the card is tapped
+                    Feedback.forTap(context);
+                    // Call the ambulance number
+                    callNumber('18');
+                  },
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.7,
                     decoration: BoxDecoration(
@@ -57,7 +62,6 @@ class AmbulanceEmergency extends StatelessWidget {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              // mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
                                   "Ambulance Emergency",
