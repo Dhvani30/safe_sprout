@@ -23,25 +23,24 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: const Color.fromARGB(255, 248, 245, 252),
       ),
-      body: Container(
-        color: const Color.fromARGB(
-            255, 248, 245, 252), // Set black background color
-        child: Padding(
-          padding: const EdgeInsets.all(0.0),
+      body: SingleChildScrollView(
+        child: Container(
+          color: const Color.fromARGB(255, 248, 245, 252),
+          padding: const EdgeInsets.only(bottom: 0.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
                 'Connected Accounts',
                 style: TextStyle(
-                    fontSize: 25,
-                    // fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 0, 0, 0)),
+                  fontSize: 25,
+                  color: Color.fromARGB(255, 0, 0, 0),
+                ),
               ),
               const SizedBox(height: 20),
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   CircleAvatar(
@@ -64,14 +63,18 @@ class HomePage extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ListView(
-                  shrinkWrap: true,
+                padding: const EdgeInsets.all(1.0),
+                child: Column(
                   children: const [
-                    Text(
-                      "Emergency",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "Emergency",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                     Emergency(),
                   ],
@@ -99,145 +102,138 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const EMagazine(),
+                        ),
+                      );
+                    },
+                    child: Column(
                       children: [
-                        InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const EMagazine(),
+                        Card(
+                          elevation: 3,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Container(
+                            height: 50,
+                            width: 50,
+                            child: Center(
+                              child: Image.asset(
+                                "assets/images/news.png",
+                                height: 32,
                               ),
-                            );
-                          },
-                          child: Column(
-                            children: [
-                              Card(
-                                elevation: 3,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                child: Container(
-                                  height: 50,
-                                  width: 50,
-                                  child: Center(
-                                    child: Image.asset(
-                                      "assets/images/news.png",
-                                      height: 32,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(height: 10),
-                              const Text("EMagazine"),
-                            ],
+                            ),
                           ),
                         ),
-                        InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const FriendLocator(),
-                              ),
-                            );
-                          },
-                          child: Column(
-                            children: [
-                              Card(
-                                elevation: 3,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                child: Container(
-                                  height: 50,
-                                  width: 50,
-                                  child: Center(
-                                    child: Image.asset(
-                                      "assets/images/location.png",
-                                      height: 32,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(height: 10),
-                              const Text("Friend Locator"),
-                            ],
-                          ),
-                        ),
-                        InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const SurvivorStory(),
-                              ),
-                            );
-                          },
-                          child: Column(
-                            children: [
-                              Card(
-                                elevation: 3,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                child: Container(
-                                  height: 50,
-                                  width: 50,
-                                  child: Center(
-                                    child: Image.asset(
-                                      "assets/images/stories.png",
-                                      height: 32,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(height: 10),
-                              const Text("Survivor Stories"),
-                            ],
-                          ),
-                        ),
-                        InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const Contacts(),
-                              ),
-                            );
-                          },
-                          child: Column(
-                            children: [
-                              Card(
-                                elevation: 3,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                child: Container(
-                                  height: 50,
-                                  width: 50,
-                                  child: Center(
-                                    child: Image.asset(
-                                      "assets/images/call.png",
-                                      height: 32,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(height: 10),
-                              const Text("Contacts"),
-                            ],
-                          ),
-                        ),
+                        const SizedBox(height: 10),
+                        const Text("EMagazine"),
                       ],
                     ),
-                  ],
-                ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const FriendLocator(),
+                        ),
+                      );
+                    },
+                    child: Column(
+                      children: [
+                        Card(
+                          elevation: 3,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Container(
+                            height: 50,
+                            width: 50,
+                            child: Center(
+                              child: Image.asset(
+                                "assets/images/location.png",
+                                height: 32,
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        const Text("Friend Locator"),
+                      ],
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SurvivorStory(),
+                        ),
+                      );
+                    },
+                    child: Column(
+                      children: [
+                        Card(
+                          elevation: 3,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Container(
+                            height: 50,
+                            width: 50,
+                            child: Center(
+                              child: Image.asset(
+                                "assets/images/stories.png",
+                                height: 32,
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        const Text("Survivor Stories"),
+                      ],
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Contacts(),
+                        ),
+                      );
+                    },
+                    child: Column(
+                      children: [
+                        Card(
+                          elevation: 3,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Container(
+                            height: 50,
+                            width: 50,
+                            child: Center(
+                              child: Image.asset(
+                                "assets/images/call.png",
+                                height: 32,
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        const Text("Contacts"),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
