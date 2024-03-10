@@ -1,18 +1,20 @@
+import 'package:dice_app/modules/Contacts.dart';
 import 'package:dice_app/modules/Emergencies/Emergency.dart';
 import 'package:dice_app/modules/Emagazine/e_magazine.dart';
+import 'package:dice_app/modules/FriendLocator.dart';
+import 'package:dice_app/modules/survivor.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:dice_app/modules/survivor.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  const HomePage({Key? key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Welcome Back!',
+          'Safe Sprout',
           style: GoogleFonts.comfortaa(
             textStyle: const TextStyle(
               fontSize: 32,
@@ -27,187 +29,217 @@ class HomePage extends StatelessWidget {
         color: const Color.fromARGB(
             255, 248, 245, 252), // Set black background color
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: SingleChildScrollView(
-            // Wrap with SingleChildScrollView
-            scrollDirection: Axis.vertical,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'Connected Accounts',
-                  style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
-                ),
-                const SingleChildScrollView(
-                  // Wrap with SingleChildScrollView
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      CircleAvatar(
-                        radius: 42,
-                        backgroundImage: AssetImage(''),
-                      ),
-                      SizedBox(width: 5),
-                      CircleAvatar(
-                        radius: 42,
-                        backgroundImage: AssetImage(''),
-                      ),
-                      SizedBox(width: 5),
-                      CircleAvatar(
-                        radius: 42,
-                        backgroundImage: AssetImage(''),
-                      ),
-                      SizedBox(width: 5),
-                      CircleAvatar(
-                        radius: 42,
-                        backgroundImage: AssetImage(''),
-                      ),
-                    ],
+          padding: const EdgeInsets.all(0.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Connected Accounts',
+                style: TextStyle(
+                    fontSize: 25,
+                    // fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 0, 0, 0)),
+              ),
+              const SizedBox(height: 20),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  CircleAvatar(
+                    radius: 42,
+                    backgroundImage: AssetImage(''),
                   ),
-                ),
-                // const SizedBox(height: 50),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Expanded(
-                      child: ListView(
-                    shrinkWrap: true,
-                    children: const [
-                      Text(
-                        "Emergency",
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                      Emergency(),
-                    ],
-                  )),
-                ),
-                const SizedBox(height: 30),
-                Center(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // Add your logic for SOS button
-                    },
-                    style: ElevatedButton.styleFrom(
-                      textStyle: const TextStyle(color: Colors.black),
-                      backgroundColor: const Color.fromARGB(255, 143, 29, 29),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 100, vertical: 100),
-                      shape: const CircleBorder(
-                          side: BorderSide(
-                              width: 2, color: Color.fromARGB(255, 0, 0, 0))),
+                  CircleAvatar(
+                    radius: 42,
+                    backgroundImage: AssetImage(''),
+                  ),
+                  CircleAvatar(
+                    radius: 42,
+                    backgroundImage: AssetImage(''),
+                  ),
+                  CircleAvatar(
+                    radius: 42,
+                    backgroundImage: AssetImage(''),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ListView(
+                  shrinkWrap: true,
+                  children: const [
+                    Text(
+                      "Emergency",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
-                    child: const Text(
-                      'SOS',
-                      style: TextStyle(color: Colors.white, fontSize: 24),
+                    Emergency(),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 30),
+              Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    // Add your logic for SOS button
+                  },
+                  style: ElevatedButton.styleFrom(
+                    textStyle: const TextStyle(color: Colors.black),
+                    backgroundColor: const Color.fromARGB(255, 143, 29, 29),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 100, vertical: 100),
+                    shape: const CircleBorder(
+                        side: BorderSide(
+                            width: 2, color: Color.fromARGB(255, 0, 0, 0))),
+                  ),
+                  child: const Text(
+                    'SOS',
+                    style: TextStyle(color: Colors.white, fontSize: 24),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const EMagazine(),
+                              ),
+                            );
+                          },
+                          child: Column(
+                            children: [
+                              Card(
+                                elevation: 3,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: Container(
+                                  height: 50,
+                                  width: 50,
+                                  child: Center(
+                                    child: Image.asset(
+                                      "assets/images/news.png",
+                                      height: 32,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 10),
+                              const Text("EMagazine"),
+                            ],
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const FriendLocator(),
+                              ),
+                            );
+                          },
+                          child: Column(
+                            children: [
+                              Card(
+                                elevation: 3,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: Container(
+                                  height: 50,
+                                  width: 50,
+                                  child: Center(
+                                    child: Image.asset(
+                                      "assets/images/location.png",
+                                      height: 32,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 10),
+                              const Text("Friend Locator"),
+                            ],
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const SurvivorStory(),
+                              ),
+                            );
+                          },
+                          child: Column(
+                            children: [
+                              Card(
+                                elevation: 3,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: Container(
+                                  height: 50,
+                                  width: 50,
+                                  child: Center(
+                                    child: Image.asset(
+                                      "assets/images/stories.png",
+                                      height: 32,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 10),
+                              const Text("Survivor Stories"),
+                            ],
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const Contacts(),
+                              ),
+                            );
+                          },
+                          child: Column(
+                            children: [
+                              Card(
+                                elevation: 3,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: Container(
+                                  height: 50,
+                                  width: 50,
+                                  child: Center(
+                                    child: Image.asset(
+                                      "assets/images/call.png",
+                                      height: 32,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 10),
+                              const Text("Contacts"),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
+                  ],
                 ),
-                const SizedBox(height: 40),
-                Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const EMagazine()),
-                          );
-                          // Add your logic for e-Magazine button
-                        },
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                                const Color.fromARGB(255, 119, 55, 95),
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 25, vertical: 10),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
-                              side: const BorderSide(
-                                color: Color.fromARGB(255, 213, 213, 213),
-                                width: 2,
-                              ),
-                            ),
-                            minimumSize: const Size(2500.0, 0)),
-                        child: Text(
-                          'E-Magazine',
-                          style: GoogleFonts.comfortaa(
-                            textStyle: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 25,
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                      ElevatedButton(
-                        onPressed: () {
-                          // Add your logic for Friend Locator button
-                        },
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                                const Color.fromARGB(255, 119, 55, 95),
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 25, vertical: 10),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
-                              side: const BorderSide(
-                                color: Color.fromARGB(255, 213, 213, 213),
-                                width: 2,
-                              ),
-                            ),
-                            minimumSize: const Size(2500.0, 0)),
-                        child: Text(
-                          'Friend Locator',
-                          style: GoogleFonts.comfortaa(
-                            textStyle: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 25,
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SurvivorStory()),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                                const Color.fromARGB(255, 119, 55, 95),
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 25, vertical: 10),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
-                              side: const BorderSide(
-                                color: Color.fromARGB(255, 213, 213, 213),
-                                width: 2,
-                              ),
-                            ),
-                            minimumSize: const Size(2500.0, 0)),
-                        child: Text(
-                          'Survivor Stories',
-                          style: GoogleFonts.comfortaa(
-                            textStyle: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 25,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

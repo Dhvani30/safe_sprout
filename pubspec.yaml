@@ -76,6 +76,10 @@ flutter:
   - assets/images/army.png
   - assets/images/flame.png
   - assets/images/women.png
+  - assets/images/location.png
+  - assets/images/news.png
+  - assets/images/stories.png
+  - assets/images/call.png
   
 
   #   - images/a_dot_burr.jpeg

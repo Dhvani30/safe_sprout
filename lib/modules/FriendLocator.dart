@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
-class SurvivorStory extends StatelessWidget {
-  const SurvivorStory({Key? key}) : super(key: key);
+class FriendLocator extends StatelessWidget {
+  const FriendLocator({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Survivor Story'),
+        title: Text('FriendLocator'),
       ),
       body: Center(
         child: Text(
-          'Survivor Story',
+          'FriendLocator',
           style: TextStyle(fontSize: 24),
         ),
       ),
