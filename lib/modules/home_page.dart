@@ -3,7 +3,7 @@ import 'package:contacts_service/contacts_service.dart';
 import 'package:dice_app/modules/Emergencies/Emergency.dart';
 import 'package:dice_app/modules/Emagazine/e_magazine.dart';
 import 'package:dice_app/modules/FriendLocator.dart';
-import 'package:dice_app/modules/contacts/contacts_features.dart';
+import 'package:dice_app/modules/Contacts.dart';
 import 'package:dice_app/modules/survivor.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -208,7 +208,7 @@ class HomePage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ContactsFeature(),
+                          builder: (context) => Contacts(),
                         ),
                       );
                     },
