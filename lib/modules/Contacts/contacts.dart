@@ -1,5 +1,7 @@
 import 'dart:ffi';
-
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:dice_app/db/database_helper.dart';
+import 'package:dice_app/modules/Contacts/model/contactsm.dart';
 import 'package:flutter/material.dart';
 import 'package:contacts_service/contacts_service.dart';
 import 'package:dice_app/utils/constants.dart';
@@ -16,11 +18,48 @@ class Contacts extends StatefulWidget {
 class _ContactsState extends State<Contacts> {
   List<Contact> contacts = [];
   List<Contact> contactsFiltered = [];
+  DatabaseHelper _databaseHelper = DatabaseHelper();
   TextEditingController searchController = TextEditingController();
+  bool isLoading = false;
+
   @override
   void initState() {
     super.initState();
-    askPermissions();
+    loadContacts();
+  }
+
+  Future<void> loadContacts() async {
+    setState(() {
+      isLoading = true;
+    });
+    await askPermissions();
+    setState(() {
+      isLoading = false;
+    });
+  }
+
+  Future<void> askPermissions() async {
+    PermissionStatus permissionStatus = await getContactPermissions();
+    if (permissionStatus == PermissionStatus.granted) {
+      await getAllContacts();
+      searchController.addListener(() {
+        filterContact();
+      });
+    } else {
+      handleInvalidPermissions(context, permissionStatus);
+    }
+  }
+
+  Future<void> getAllContacts() async {
+    List<Contact> _contacts = await ContactsService.getContacts();
+    _contacts = _contacts
+        .where((contact) =>
+            contact.displayName?.isNotEmpty ??
+            false && contact.phones != null && contact.phones!.isNotEmpty)
+        .toList();
+    setState(() {
+      contacts = _contacts;
+    });
   }
 
   String flattenPhoneNumber(String phoneStr) {
@@ -56,18 +95,6 @@ class _ContactsState extends State<Contacts> {
     });
   }
 
-  Future<void> askPermissions() async {
-    PermissionStatus permissionStatus = await getContactPermissions();
-    if (permissionStatus == PermissionStatus.granted) {
-      getAllContacts();
-      searchController.addListener(() {
-        filterContact();
-      });
-    } else {
-      handleInvalidPermissions(context, permissionStatus);
-    }
-  }
-
   void handleInvalidPermissions(
       BuildContext context, PermissionStatus permissionStatus) {
     if (permissionStatus == PermissionStatus.denied) {
@@ -88,25 +115,13 @@ class _ContactsState extends State<Contacts> {
     }
   }
 
-  getAllContacts() async {
-    List<Contact> _contacts = await ContactsService.getContacts();
-    _contacts = _contacts
-        .where((contact) =>
-            contact.displayName?.isNotEmpty ??
-            false && contact.phones != null && contact.phones!.isNotEmpty)
-        .toList();
-    setState(() {
-      contacts = _contacts;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     bool isSearchIng = searchController.text.isNotEmpty;
     bool listItemExit = (contactsFiltered.length > 0 || contacts.length > 0);
     return Scaffold(
-      body: contacts.isEmpty
-          ? SafeArea(child: Center(child: const CircularProgressIndicator()))
+      body: isLoading
+          ? SafeArea(child: Center(child: CircularProgressIndicator()))
           : Column(
               children: [
                 Padding(
@@ -157,6 +172,18 @@ class _ContactsState extends State<Contacts> {
                                         )
                                       : CircleAvatar(
                                           child: Text(contact.initials())),
+                                  onTap: () {
+                                    if (contact.phones!.length > 0) {
+                                      final String phoneNumber =
+                                          contact.phones!.elementAt(0).value!;
+                                      final String name = contact.displayName!;
+                                      _addContact(TContact(phoneNumber, name));
+                                    } else {
+                                      Fluttertoast.showToast(
+                                          msg:
+                                              "Oops! phone number of this contact does not exist");
+                                    }
+                                  },
                                 ),
                               ),
                             );
@@ -169,5 +196,15 @@ class _ContactsState extends State<Contacts> {
               ],
             ),
     );
+  }
+
+  void _addContact(TContact newContact) async {
+    int result = await _databaseHelper.insertContact(newContact);
+    if (result != 0) {
+      Fluttertoast.showToast(msg: "contact added successfully");
+    } else {
+      Fluttertoast.showToast(msg: "failed to add contact");
+    }
+    Navigator.of(context).pop(true);
   }
 }
