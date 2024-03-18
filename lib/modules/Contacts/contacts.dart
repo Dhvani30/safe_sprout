@@ -7,6 +7,7 @@ import 'package:contacts_service/contacts_service.dart';
 import 'package:dice_app/utils/constants.dart';
 import 'package:flutter/widgets.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:flutter/services.dart';
 
 class Contacts extends StatefulWidget {
   const Contacts({Key? key}) : super(key: key);
@@ -92,6 +93,7 @@ class _ContactsState extends State<Contacts> {
     }
     setState(() {
       contactsFiltered = _contacts;
+      HapticFeedback.mediumImpact();
     });
   }
 
@@ -174,6 +176,7 @@ class _ContactsState extends State<Contacts> {
                                           child: Text(contact.initials())),
                                   onTap: () {
                                     if (contact.phones!.length > 0) {
+                                      HapticFeedback.mediumImpact();
                                       final String phoneNumber =
                                           contact.phones!.elementAt(0).value!;
                                       final String name = contact.displayName!;

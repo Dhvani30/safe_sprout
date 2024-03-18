@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
 class AmbulanceEmergency extends StatelessWidget {
@@ -24,8 +25,7 @@ class AmbulanceEmergency extends StatelessWidget {
                 ),
                 child: InkWell(
                   onTap: () {
-                    // Provide haptic feedback when the card is tapped
-                    Feedback.forTap(context);
+                    HapticFeedback.mediumImpact();
                     // Call the ambulance number
                     callNumber('18');
                   },

@@ -7,6 +7,7 @@ import 'package:dice_app/modules/Emagazine/e_magazine.dart';
 import 'package:dice_app/modules/FriendLocator.dart';
 import 'package:dice_app/modules/Contacts/contacts.dart';
 import 'package:dice_app/modules/survivor.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatelessWidget {
@@ -16,6 +17,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: const Text("Safe Sprout"),
         backgroundColor: const Color.fromARGB(255, 248, 245, 252),
       ),
       body: SingleChildScrollView(
@@ -25,36 +27,36 @@ class HomePage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Connected Accounts',
-                style: TextStyle(
-                  fontSize: 25,
-                  color: Color.fromARGB(255, 0, 0, 0),
-                ),
-              ),
-              const SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  CircleAvatar(
-                    radius: 42,
-                    backgroundImage: AssetImage(''),
-                  ),
-                  CircleAvatar(
-                    radius: 42,
-                    backgroundImage: AssetImage(''),
-                  ),
-                  CircleAvatar(
-                    radius: 42,
-                    backgroundImage: AssetImage(''),
-                  ),
-                  CircleAvatar(
-                    radius: 42,
-                    backgroundImage: AssetImage(''),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 20),
+              // const Text(
+              //   'Connected Accounts',
+              //   style: TextStyle(
+              //     fontSize: 25,
+              //     color: Color.fromARGB(255, 0, 0, 0),
+              //   ),
+              // ),
+              // const SizedBox(height: 20),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //   children: [
+              //     CircleAvatar(
+              //       radius: 42,
+              //       backgroundImage: AssetImage(''),
+              //     ),
+              //     CircleAvatar(
+              //       radius: 42,
+              //       backgroundImage: AssetImage(''),
+              //     ),
+              //     CircleAvatar(
+              //       radius: 42,
+              //       backgroundImage: AssetImage(''),
+              //     ),
+              //     CircleAvatar(
+              //       radius: 42,
+              //       backgroundImage: AssetImage(''),
+              //     ),
+              //   ],
+              // ),
+              const SizedBox(height: 10),
               Padding(
                 padding: const EdgeInsets.all(1.0),
                 child: Column(
@@ -69,14 +71,16 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                     ),
+                    const SizedBox(height: 10),
                     Emergency(),
                   ],
                 ),
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 110),
               Center(
                 child: ElevatedButton(
                   onPressed: () {
+                    HapticFeedback.mediumImpact();
                     // Add your logic for SOS button
                   },
                   style: ElevatedButton.styleFrom(
@@ -103,6 +107,7 @@ class HomePage extends StatelessWidget {
                     children: [
                       InkWell(
                         onTap: () {
+                          HapticFeedback.mediumImpact();
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -112,6 +117,7 @@ class HomePage extends StatelessWidget {
                         },
                         child: Column(
                           children: [
+                            const SizedBox(height: 110),
                             Card(
                               elevation: 3,
                               shape: RoundedRectangleBorder(
@@ -135,70 +141,7 @@ class HomePage extends StatelessWidget {
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const FriendLocator(),
-                            ),
-                          );
-                        },
-                        child: Column(
-                          children: [
-                            Card(
-                              elevation: 3,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Container(
-                                height: 50,
-                                width: 50,
-                                child: Center(
-                                  child: Image.asset(
-                                    "assets/images/location.png",
-                                    height: 32,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            const SizedBox(height: 10),
-                            const Text("Friend Locator"),
-                          ],
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const SurvivorStory(),
-                            ),
-                          );
-                        },
-                        child: Column(
-                          children: [
-                            Card(
-                              elevation: 3,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Container(
-                                height: 50,
-                                width: 50,
-                                child: Center(
-                                  child: Image.asset(
-                                    "assets/images/stories.png",
-                                    height: 32,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            const SizedBox(height: 10),
-                            const Text("Survivor Stories"),
-                          ],
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {
+                          HapticFeedback.mediumImpact();
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -208,6 +151,7 @@ class HomePage extends StatelessWidget {
                         },
                         child: Column(
                           children: [
+                            const SizedBox(height: 110),
                             Card(
                               elevation: 3,
                               shape: RoundedRectangleBorder(
@@ -224,8 +168,78 @@ class HomePage extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            const SizedBox(height: 10),
+                            const SizedBox(height: 15),
                             const Text("Contacts"),
+                            // const SizedBox(height: 80),
+                          ],
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          HapticFeedback.mediumImpact();
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const FriendLocator(),
+                            ),
+                          );
+                        },
+                        child: Column(
+                          children: [
+                            const SizedBox(height: 110),
+                            Card(
+                              elevation: 3,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Container(
+                                height: 50,
+                                width: 50,
+                                child: Center(
+                                  child: Image.asset(
+                                    "assets/images/location.png",
+                                    height: 32,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            // const SizedBox(height: 15),
+                            const Text("Friend \nLocator"),
+                          ],
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          HapticFeedback.mediumImpact();
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const SurvivorStory(),
+                            ),
+                          );
+                        },
+                        child: Column(
+                          children: [
+                            const SizedBox(height: 110),
+                            Card(
+                              elevation: 3,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Container(
+                                height: 50,
+                                width: 50,
+                                child: Center(
+                                  child: Image.asset(
+                                    "assets/images/stories.png",
+                                    height: 32,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            // const SizedBox(height: 15),
+                            const Text("Survivor \n Stories"),
+                            // const SizedBox(height: 80),
                           ],
                         ),
                       ),

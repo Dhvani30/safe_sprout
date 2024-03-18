@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:dice_app/modules/Emagazine/article.dart';
 import 'package:dice_app/modules/Emagazine/consts.dart';
@@ -64,6 +65,7 @@ class _EMagazineState extends State<EMagazine> {
           ),
           child: ListTile(
             onTap: () {
+              HapticFeedback.mediumImpact();
               _launchUrl(Uri.parse(article.url ?? ""));
             },
             leading: SizedBox(

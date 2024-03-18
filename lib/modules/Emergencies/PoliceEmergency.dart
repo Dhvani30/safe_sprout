@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
 class PoliceEmergency extends StatelessWidget {
@@ -23,7 +24,10 @@ class PoliceEmergency extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: InkWell(
-                  onTap: () => callNumber('10'),
+                  onTap: () {
+                    HapticFeedback.mediumImpact();
+                    callNumber('10');
+                  },
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.7,
                     decoration: BoxDecoration(

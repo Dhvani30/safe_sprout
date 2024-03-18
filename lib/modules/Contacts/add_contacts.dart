@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:flutter/services.dart';
 
 class AddContacts extends StatefulWidget {
   const AddContacts({Key? key}) : super(key: key);
@@ -63,6 +64,7 @@ class _AddContactsState extends State<AddContacts> {
             ElevatedButton(
               child: Text("Add Trusted Contacts"),
               onPressed: () async {
+                HapticFeedback.mediumImpact();
                 final result = await Navigator.push<bool>(
                   context,
                   MaterialPageRoute(builder: (context) => Contacts()),
@@ -81,6 +83,7 @@ class _AddContactsState extends State<AddContacts> {
                       title: Text(contactList![index].name),
                       trailing: IconButton(
                         onPressed: () {
+                          HapticFeedback.mediumImpact();
                           deleteContact(contactList![index]);
                         },
                         icon: Icon(Icons.delete),

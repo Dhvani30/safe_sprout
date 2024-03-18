@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dice_app/modules/home_page.dart';
+import 'package:flutter/services.dart';
 
 class RegisterPage extends StatelessWidget {
   @override
@@ -25,6 +26,9 @@ class RegisterPage extends StatelessWidget {
                   labelText: 'Email',
                   border: OutlineInputBorder(),
                 ),
+                onTap: () {
+                  HapticFeedback.mediumImpact();
+                },
               ),
               SizedBox(height: 20),
               TextField(
@@ -32,6 +36,9 @@ class RegisterPage extends StatelessWidget {
                   labelText: 'College Code',
                   border: OutlineInputBorder(),
                 ),
+                onTap: () {
+                  HapticFeedback.mediumImpact();
+                },
               ),
               SizedBox(height: 20),
               TextField(
@@ -39,6 +46,9 @@ class RegisterPage extends StatelessWidget {
                   labelText: 'Enrollment Number',
                   border: OutlineInputBorder(),
                 ),
+                onTap: () {
+                  HapticFeedback.mediumImpact();
+                },
               ),
               SizedBox(height: 20),
               TextField(
@@ -47,6 +57,9 @@ class RegisterPage extends StatelessWidget {
                   labelText: 'Password',
                   border: OutlineInputBorder(),
                 ),
+                onTap: () {
+                  HapticFeedback.mediumImpact();
+                },
               ),
               SizedBox(height: 20),
               SizedBox(
@@ -54,6 +67,8 @@ class RegisterPage extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () {
                     // Navigate to the home page after registration
+
+                    HapticFeedback.mediumImpact();
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => HomePage()),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dice_app/modules/home_page.dart';
+import 'package:flutter/services.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -24,6 +25,9 @@ class LoginPage extends StatelessWidget {
                 labelText: 'Email',
                 border: OutlineInputBorder(),
               ),
+              onTap: () {
+                HapticFeedback.mediumImpact();
+              },
             ),
             SizedBox(height: 20),
             TextField(
@@ -32,13 +36,16 @@ class LoginPage extends StatelessWidget {
                 labelText: 'Password',
                 border: OutlineInputBorder(),
               ),
+              onTap: () {
+                HapticFeedback.mediumImpact();
+              },
             ),
             SizedBox(height: 20),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  // Navigate to the home page after login
+                  HapticFeedback.mediumImpact();
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => HomePage()),
