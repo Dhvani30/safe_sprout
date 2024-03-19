@@ -86,6 +86,10 @@ flutter:
   - assets/images/stories.png
   - assets/images/call.png
   - assets/images/logo.png
+  - assets/images/busloc.jpg
+  - assets/images/hospitalloc.jpg
+  - assets/images/policeloc.jpg
+  - assets/images/mediloc.jpg
   
 
   #   - images/a_dot_burr.jpeg
