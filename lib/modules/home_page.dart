@@ -1,14 +1,10 @@
 import 'package:dice_app/modules/Contacts/add_contacts.dart';
 import 'package:flutter/material.dart';
-import 'package:contacts_service/contacts_service.dart';
-import 'package:dice_app/utils/constants.dart';
 import 'package:dice_app/modules/Emergencies/Emergency.dart';
 import 'package:dice_app/modules/Emagazine/e_magazine.dart';
 import 'package:dice_app/modules/FriendLocator.dart';
-import 'package:dice_app/modules/Contacts/contacts.dart';
 import 'package:dice_app/modules/survivor.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key});
@@ -27,40 +23,40 @@ class HomePage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // const Text(
-              //   'Connected Accounts',
-              //   style: TextStyle(
-              //     fontSize: 25,
-              //     color: Color.fromARGB(255, 0, 0, 0),
-              //   ),
-              // ),
-              // const SizedBox(height: 20),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              //   children: [
-              //     CircleAvatar(
-              //       radius: 42,
-              //       backgroundImage: AssetImage(''),
-              //     ),
-              //     CircleAvatar(
-              //       radius: 42,
-              //       backgroundImage: AssetImage(''),
-              //     ),
-              //     CircleAvatar(
-              //       radius: 42,
-              //       backgroundImage: AssetImage(''),
-              //     ),
-              //     CircleAvatar(
-              //       radius: 42,
-              //       backgroundImage: AssetImage(''),
-              //     ),
-              //   ],
-              // ),
+              const Text(
+                'Connected Accounts',
+                style: TextStyle(
+                  fontSize: 25,
+                  color: Color.fromARGB(255, 0, 0, 0),
+                ),
+              ),
+              const SizedBox(height: 20),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  CircleAvatar(
+                    radius: 42,
+                    backgroundImage: AssetImage(''),
+                  ),
+                  CircleAvatar(
+                    radius: 42,
+                    backgroundImage: AssetImage(''),
+                  ),
+                  CircleAvatar(
+                    radius: 42,
+                    backgroundImage: AssetImage(''),
+                  ),
+                  CircleAvatar(
+                    radius: 42,
+                    backgroundImage: AssetImage(''),
+                  ),
+                ],
+              ),
               const SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.all(1.0),
+              const Padding(
+                padding: EdgeInsets.all(1.0),
                 child: Column(
-                  children: const [
+                  children: [
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
@@ -71,7 +67,7 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: 10),
                     Emergency(),
                   ],
                 ),
@@ -88,9 +84,6 @@ class HomePage extends StatelessWidget {
                     backgroundColor: const Color.fromARGB(255, 143, 29, 29),
                     padding: const EdgeInsets.symmetric(
                         horizontal: 100, vertical: 100),
-                    shape: const CircleBorder(
-                        side: BorderSide(
-                            width: 2, color: Color.fromARGB(255, 0, 0, 0))),
                   ),
                   child: const Text(
                     'SOS',
