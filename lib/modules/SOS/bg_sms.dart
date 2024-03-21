@@ -2,7 +2,8 @@ import 'package:flutter_sms/flutter_sms.dart';
 import 'package:geolocator/geolocator.dart';
 
 class SmsService {
-  static Future<void> sendSmsWithLocation(String phoneNumber) async {
+  static Future<void> sendSmsWithLocation(
+      String phoneNumber, String messageBody) async {
     try {
       // Check if location service is enabled
       if (!await Geolocator.isLocationServiceEnabled()) {
@@ -29,6 +30,7 @@ class SmsService {
       double longitude = position.longitude;
 
       // Construct Google Maps link
+
       String googleMapsLink =
           'https://www.google.com/maps?q=$latitude,$longitude';
 

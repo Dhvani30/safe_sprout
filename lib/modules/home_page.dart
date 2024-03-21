@@ -1,12 +1,16 @@
+import 'package:dice_app/database_helper.dart';
 import 'package:dice_app/modules/Contacts/add_contacts.dart';
+import 'package:dice_app/modules/Contacts/model/contactsm.dart';
 import 'package:dice_app/modules/Emergencies/Emergency.dart';
 import 'package:dice_app/modules/Emagazine/e_magazine.dart';
 import 'package:dice_app/modules/FriendLocator.dart';
 import 'package:dice_app/modules/SOS/bg_sms.dart';
-import 'package:dice_app/modules/SOS/sos.dart';
+// import 'package:dice_app/modules/SOS/sms_service.dart'; // Import the SmsService class
 import 'package:dice_app/modules/SurvivorStories/survivor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:geolocator/geolocator.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key});
@@ -48,13 +52,65 @@ class HomePage extends StatelessWidget {
               const SizedBox(height: 110),
               Center(
                 child: ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
                     HapticFeedback.mediumImpact();
-                    SmsService.sendSmsWithLocation('9869614268');
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) => SmsSenderPage()),
-                    // );
+                    List<TContact> contactList =
+                        await DatabaseHelper().getContactList();
+                    print(contactList.length);
+                    if (contactList.isEmpty) {
+                      Fluttertoast.showToast(
+                          msg: "Emergency contact list is empty");
+                    } else {
+                      try {
+                        // Check if location service is enabled
+                        if (!await Geolocator.isLocationServiceEnabled()) {
+                          throw 'Location service disabled';
+                        }
+
+                        // Request location permission
+                        LocationPermission permission =
+                            await Geolocator.checkPermission();
+                        if (permission == LocationPermission.denied ||
+                            permission == LocationPermission.deniedForever) {
+                          permission = await Geolocator.requestPermission();
+                          if (permission == LocationPermission.denied ||
+                              permission == LocationPermission.deniedForever) {
+                            throw 'Location permission denied';
+                          }
+                        }
+
+                        // Get current location
+                        Position position = await Geolocator.getCurrentPosition(
+                          desiredAccuracy: LocationAccuracy.high,
+                        );
+
+                        double latitude = position.latitude;
+                        double longitude = position.longitude;
+
+                        // Construct Google Maps link
+                        String googleMapsLink =
+                            'https://www.google.com/maps?q=$latitude,$longitude';
+
+                        // Construct SMS message with location
+                        String messageBody =
+                            'Need help! Please track me here: $googleMapsLink';
+
+                        // Send SMS to each contact
+                        for (TContact contact in contactList) {
+                          String phoneNumber = contact.number;
+                          await SmsService.sendSmsWithLocation(
+                            phoneNumber,
+                            messageBody,
+                          );
+                          print("SMS sent successfully to $phoneNumber");
+                        }
+                      } catch (error) {
+                        print("Error sending SOS: $error");
+                        Fluttertoast.showToast(
+                          msg: "Failed to send SOS message: $error",
+                        );
+                      }
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                     textStyle: const TextStyle(color: Colors.black),
