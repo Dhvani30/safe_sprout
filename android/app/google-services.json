@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "808136814093",
+    "project_id": "safe-sprout",
+    "storage_bucket": "safe-sprout.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:808136814093:android:61707f49916218a7f5af44",
+        "android_client_info": {
+          "package_name": "com.example.dice_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmsyK3KKIN6SflBcGTsDB9OKHaCbn9S7o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

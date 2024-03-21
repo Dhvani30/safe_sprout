@@ -14,11 +14,11 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Safe Sprout"),
-        backgroundColor: const Color.fromARGB(255, 248, 245, 252),
+        // backgroundColor: const Color.fromARGB(255, 157, 129, 137),
       ),
       body: SingleChildScrollView(
         child: Container(
-          color: const Color.fromARGB(255, 248, 245, 252),
+          // color: Color.fromARGB(25, 51, 51, 51),
           padding: const EdgeInsets.only(left: 5.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

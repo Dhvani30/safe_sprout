@@ -1,5 +1,5 @@
 import 'package:contacts_service/contacts_service.dart';
-import 'package:dice_app/db/database_helper.dart';
+import 'package:dice_app/database_helper.dart';
 import 'package:dice_app/modules/Contacts/contacts.dart';
 import 'package:dice_app/modules/Contacts/model/contactsm.dart';
 import 'package:flutter/cupertino.dart';
