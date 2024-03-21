@@ -2,6 +2,8 @@ import 'package:dice_app/modules/Contacts/add_contacts.dart';
 import 'package:dice_app/modules/Emergencies/Emergency.dart';
 import 'package:dice_app/modules/Emagazine/e_magazine.dart';
 import 'package:dice_app/modules/FriendLocator.dart';
+import 'package:dice_app/modules/SOS/bg_sms.dart';
+import 'package:dice_app/modules/SOS/sos.dart';
 import 'package:dice_app/modules/SurvivorStories/survivor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -48,7 +50,11 @@ class HomePage extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () {
                     HapticFeedback.mediumImpact();
-                    // Add your logic for SOS button
+                    SmsService.sendSmsWithLocation('9869614268');
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(builder: (context) => sos()),
+                    // );
                   },
                   style: ElevatedButton.styleFrom(
                     textStyle: const TextStyle(color: Colors.black),
