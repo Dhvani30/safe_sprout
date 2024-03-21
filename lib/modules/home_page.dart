@@ -53,7 +53,7 @@ class HomePage extends StatelessWidget {
                     SmsService.sendSmsWithLocation('9869614268');
                     // Navigator.push(
                     //   context,
-                    //   MaterialPageRoute(builder: (context) => sos()),
+                    //   MaterialPageRoute(builder: (context) => SmsSenderPage()),
                     // );
                   },
                   style: ElevatedButton.styleFrom(

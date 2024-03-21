@@ -4,6 +4,11 @@ import 'package:geolocator/geolocator.dart';
 class SmsService {
   static Future<void> sendSmsWithLocation(String phoneNumber) async {
     try {
+      // Check if location service is enabled
+      if (!await Geolocator.isLocationServiceEnabled()) {
+        throw 'Location service disabled';
+      }
+
       // Request location permission
       LocationPermission permission = await Geolocator.checkPermission();
       if (permission == LocationPermission.denied ||
@@ -13,11 +18,6 @@ class SmsService {
             permission == LocationPermission.deniedForever) {
           throw 'Location permission denied';
         }
-      }
-
-      // Check if location service is enabled
-      if (!await Geolocator.isLocationServiceEnabled()) {
-        throw 'Location service disabled';
       }
 
       // Get current location
