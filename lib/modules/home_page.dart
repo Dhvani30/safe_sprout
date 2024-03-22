@@ -1,6 +1,8 @@
 import 'package:dice_app/database_helper.dart';
 import 'package:dice_app/modules/Contacts/add_contacts.dart';
 import 'package:dice_app/modules/Contacts/model/contactsm.dart';
+import 'package:dice_app/modules/Custom/CustomCarouel.dart';
+// import 'package:dice_app/modules/CustomCaroeul.dart';
 import 'package:dice_app/modules/Emergencies/Emergency.dart';
 import 'package:dice_app/modules/Emagazine/e_magazine.dart';
 import 'package:dice_app/modules/FriendLocator.dart';
@@ -20,15 +22,36 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Safe Sprout"),
-        // backgroundColor: const Color.fromARGB(255, 157, 129, 137),
+        backgroundColor: Color.fromARGB(255, 251, 243, 245),
       ),
       body: SingleChildScrollView(
         child: Container(
+          color: Color.fromARGB(255, 251, 243, 245),
           // color: Color.fromARGB(25, 51, 51, 51),
           padding: const EdgeInsets.only(left: 5.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const Padding(
+                padding: EdgeInsets.all(1.0),
+                child: Column(
+                  children: [
+                    const SizedBox(height: 30),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "Inspiring Articles",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    CustomCarouel(),
+                  ],
+                ),
+              ),
               const SizedBox(height: 10),
               const Padding(
                 padding: EdgeInsets.all(1.0),
@@ -49,7 +72,7 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: 110),
+              const SizedBox(height: 30),
               Center(
                 child: ElevatedButton(
                   onPressed: () async {
@@ -113,14 +136,18 @@ class HomePage extends StatelessWidget {
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                    textStyle: const TextStyle(color: Colors.black),
-                    backgroundColor: const Color.fromARGB(255, 143, 29, 29),
+                    elevation: 5,
+                    textStyle: const TextStyle(color: Colors.white),
+                    backgroundColor: Color.fromARGB(255, 218, 108, 108),
                     padding: const EdgeInsets.symmetric(
                         horizontal: 100, vertical: 100),
                   ),
                   child: const Text(
                     'SOS',
-                    style: TextStyle(color: Colors.white, fontSize: 24),
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
@@ -130,6 +157,7 @@ class HomePage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Color.fromARGB(255, 251, 243, 245),
         items: [
           BottomNavigationBarItem(
             icon: Column(
@@ -162,7 +190,7 @@ class HomePage extends StatelessWidget {
                   "assets/images/location.png",
                   height: 36,
                 ),
-                const Text("Friend \n Locator"),
+                const Text("Live\nSafe"),
               ],
             ),
             label: '',

@@ -29,6 +29,7 @@ class WomenEmergency extends StatelessWidget {
                     callNumber('81');
                   },
                   child: Container(
+                    height: 250,
                     width: MediaQuery.of(context).size.width * 0.7,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
@@ -68,7 +69,7 @@ class WomenEmergency extends StatelessWidget {
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
-                                    overflow: TextOverflow.visible,
+                                    // overflow: TextOverflow.visible,
                                     fontSize:
                                         MediaQuery.of(context).size.width *
                                             0.055,
@@ -78,7 +79,7 @@ class WomenEmergency extends StatelessWidget {
                                   "Call 181 for women's safety and emergencies",
                                   style: TextStyle(
                                     color: Colors.white,
-                                    overflow: TextOverflow.visible,
+                                    // overflow: TextOverflow.visible,
                                     fontSize:
                                         MediaQuery.of(context).size.width *
                                             0.032,

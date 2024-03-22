@@ -58,12 +58,19 @@ class _AddContactsState extends State<AddContacts> {
     }
     return SafeArea(
       child: Container(
-        color: const Color.fromARGB(255, 248, 245, 252),
+        color: Color.fromARGB(255, 251, 243, 245),
+        // color: const Color.fromARGB(255, 248, 245, 252),
         padding: EdgeInsets.only(top: 25),
         child: Column(
           children: [
             ElevatedButton(
-              child: Text("Add Trusted Contacts"),
+              child: Text(
+                "Add Trusted Contacts",
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              ),
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Color.fromARGB(255, 215, 202, 232)),
               onPressed: () async {
                 HapticFeedback.mediumImpact();
                 final result = await Navigator.push<bool>(

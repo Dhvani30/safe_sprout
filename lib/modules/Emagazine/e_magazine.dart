@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:dice_app/modules/Emagazine/article.dart';
 import 'package:dice_app/modules/Emagazine/consts.dart';
@@ -20,6 +21,7 @@ class _EMagazineState extends State<EMagazine> {
   List<Article> articles = [];
   double defaultImageHeight = 250;
   double defaultImageWidth = 100;
+  bool isLoading = true;
 
   @override
   void initState() {
@@ -33,7 +35,14 @@ class _EMagazineState extends State<EMagazine> {
       appBar: AppBar(
         title: const Text("Women's Safety News"),
       ),
-      body: _buildUI(),
+      body: isLoading ? _buildProgressIndicator() : _buildUI(),
+    );
+  }
+
+  Widget _buildProgressIndicator() {
+    Color:
+    return Center(
+      child: CircularProgressIndicator(),
     );
   }
 
@@ -49,6 +58,7 @@ class _EMagazineState extends State<EMagazine> {
         String formattedDateTime = _convertToIST(article.publishedAt ?? "");
 
         return Container(
+          // color: Color.fromARGB(255, 251, 243, 245),
           margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
           padding: EdgeInsets.all(8.0),
           decoration: BoxDecoration(
@@ -112,6 +122,7 @@ class _EMagazineState extends State<EMagazine> {
           articlesJson.map((a) => Article.fromJson(a)).toList();
       newsArticle = newsArticle.where((a) => a.title != "[Removed]").toList();
       articles = newsArticle;
+      isLoading = false;
     });
   }
 
@@ -122,6 +133,9 @@ class _EMagazineState extends State<EMagazine> {
       }
     } catch (e) {
       print('Error launching URL: $e');
+      setState(() {
+        isLoading = false;
+      });
       // Handle the error gracefully, such as showing a snackbar or dialog
     }
   }

@@ -3,38 +3,153 @@ import 'package:dice_app/modules/FriendLocator/live_safe/PoliceStationCard.dart'
 import 'package:dice_app/modules/FriendLocator/live_safe/HospitalCard.dart';
 import 'package:dice_app/modules/FriendLocator/live_safe/Pharmacy.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class LiveSafe extends StatelessWidget {
   const LiveSafe({Key? key}) : super(key: key);
+
   static Future<void> openMap(String location) async {
-    String googleUrl =
-        'https://www.google.com/maps/search/police+stations+near+me/$location';
+    String googleUrl = 'https://www.google.com/maps/search/$location';
     final Uri _url = Uri.parse(googleUrl);
     try {
       await launchUrl(_url);
     } catch (e) {
       Fluttertoast.showToast(
-          msg: 'something went wrong! call emergency number');
+          msg: 'Something went wrong! Call emergency number');
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 90,
-      width: MediaQuery.of(context).size.width,
-      child: ListView(
-        physics: const BouncingScrollPhysics(),
-        scrollDirection: Axis.horizontal,
-        children: const [
-          PoliceStationCard(onMapFunction: openMap),
-          HospitalCard(onMapFunction: openMap),
-          PharmacyCard(onMapFunction: openMap),
-          BusStationCard(onMapFunction: openMap),
-        ],
+    return Padding(
+      padding: const EdgeInsets.only(top: 20.0),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            _buildLocationCard(
+              context,
+              onTap: () {
+                openMap('police station near me');
+              },
+              icon: 'assets/images/policeloc.jpg',
+              label: '  Police Station  ',
+            ),
+            SizedBox(height: 20), // Add vertical space between cards
+            _buildLocationCard(
+              context,
+              onTap: () {
+                openMap('hospital near me');
+              },
+              icon: 'assets/images/hospitalloc.jpg',
+              label: '  Hospital  ',
+            ),
+            SizedBox(height: 20), // Add vertical space between cards
+            _buildLocationCard(
+              context,
+              onTap: () {
+                openMap('pharmacy near me');
+              },
+              icon: 'assets/images/mediloc.jpg',
+              label: '  Pharmacy  ',
+            ),
+            SizedBox(height: 20), // Add vertical space between cards
+            _buildLocationCard(
+              context,
+              onTap: () {
+                openMap('bus station near me');
+              },
+              icon: 'assets/images/busloc.jpg',
+              label: '  Bus Station  ',
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildLocationCard(
+    BuildContext context, {
+    required VoidCallback onTap,
+    required String icon,
+    required String label,
+  }) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 3.0),
+      child: InkWell(
+        onTap: onTap,
+        child: Card(
+          elevation: 3,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: SizedBox(
+            height: 150, // Set a finite height for the card
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Flexible(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 215, 202, 232),
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(20),
+                          bottomLeft: Radius.circular(20),
+                          topRight: Radius.circular(20),
+                          bottomRight: Radius.circular(20),
+                        ),
+                      ),
+                      // decoration: BoxDecoration(
+                      //   color: Colors.white,
+                      //   borderRadius: BorderRadius.only(
+                      //     topLeft: Radius.circular(20),
+                      //     bottomLeft: Radius.circular(20),
+                      //   ),
+                      // ),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 8), // Adjust padding here
+                      // color: Colors.blue,
+                      child: Center(
+                        child: Card(
+                          elevation: 3,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20),
+                                bottomLeft: Radius.circular(20),
+                                topRight: Radius.circular(20),
+                                bottomRight: Radius.circular(20),
+                              ),
+                            ),
+                            child: Text(
+                              label,
+                              selectionColor:
+                                  Color.fromARGB(255, 215, 202, 232),
+                              style: TextStyle(
+                                fontSize: 20, // Increase font size if needed
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Image.asset(
+                  icon,
+                  fit: BoxFit.cover,
+                  width: 80,
+                  height: 80,
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
