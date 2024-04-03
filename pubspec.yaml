@@ -46,7 +46,7 @@ dependencies:
   vibration: ^1.8.4
   twilio_flutter: ^0.3.0
   webview_flutter: ^2.0.13
-
+  cloud_firestore: ^4.15.9
   # url_launcher: ^6.2.5
   geolocator: ^11.0.0
   flutter_sms:
@@ -61,6 +61,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   carousel_slider: ^4.2.1
+  http: ^1.2.1
   # twilio_voice: ^0.1.3
 
 dev_dependencies:

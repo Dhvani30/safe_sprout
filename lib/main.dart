@@ -14,6 +14,7 @@ void main() async {
 
   runApp(
     MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Your App Name',
       home: user != null
           ? const HomePage()

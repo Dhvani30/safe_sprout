@@ -9,10 +9,12 @@ import 'package:dice_app/modules/FriendLocator.dart';
 import 'package:dice_app/modules/SOS/bg_sms.dart';
 // import 'package:dice_app/modules/SOS/sms_service.dart'; // Import the SmsService class
 import 'package:dice_app/modules/SurvivorStories/survivor.dart';
+// import 'package:dice_app/modules/chatbot.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key});
@@ -21,7 +23,15 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Safe Sprout"),
+        title: const Text(
+          "Safe Sprout",
+        ),
+        titleTextStyle: GoogleFonts.comfortaa(
+          textStyle: TextStyle(
+            fontSize: 20,
+            color: Colors.black,
+          ),
+        ),
         backgroundColor: Color.fromARGB(255, 251, 243, 245),
       ),
       body: SingleChildScrollView(
@@ -32,26 +42,26 @@ class HomePage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Padding(
-                padding: EdgeInsets.all(1.0),
-                child: Column(
-                  children: [
-                    const SizedBox(height: 30),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        "Inspiring Articles",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    CustomCarouel(),
-                  ],
-                ),
-              ),
+              // const Padding(
+              //   padding: EdgeInsets.all(1.0),
+              //   child: Column(
+              //     children: [
+              //       const SizedBox(height: 30),
+              //       Align(
+              //         alignment: Alignment.centerLeft,
+              //         child: Text(
+              //           "Inspiring Articles",
+              //           style: TextStyle(
+              //             fontSize: 20,
+              //             fontWeight: FontWeight.bold,
+              //           ),
+              //         ),
+              //       ),
+              //       SizedBox(height: 10),
+              //       ChatBot(),
+              //     ],
+              //   ),
+              // ),
               const SizedBox(height: 10),
               const Padding(
                 padding: EdgeInsets.all(1.0),
@@ -152,6 +162,26 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
+              const Padding(
+                padding: EdgeInsets.all(1.0),
+                child: Column(
+                  children: [
+                    const SizedBox(height: 30),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "Inspiring Articles",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    CustomCarouel(),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
