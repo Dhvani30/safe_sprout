@@ -2,14 +2,11 @@ import 'package:dice_app/database_helper.dart';
 import 'package:dice_app/modules/Contacts/add_contacts.dart';
 import 'package:dice_app/modules/Contacts/model/contactsm.dart';
 import 'package:dice_app/modules/Custom/CustomCarouel.dart';
-// import 'package:dice_app/modules/CustomCaroeul.dart';
 import 'package:dice_app/modules/Emergencies/Emergency.dart';
 import 'package:dice_app/modules/Emagazine/e_magazine.dart';
 import 'package:dice_app/modules/FriendLocator.dart';
 import 'package:dice_app/modules/SOS/bg_sms.dart';
-// import 'package:dice_app/modules/SOS/sms_service.dart'; // Import the SmsService class
 import 'package:dice_app/modules/SurvivorStories/survivor.dart';
-// import 'package:dice_app/modules/chatbot.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -42,26 +39,6 @@ class HomePage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // const Padding(
-              //   padding: EdgeInsets.all(1.0),
-              //   child: Column(
-              //     children: [
-              //       const SizedBox(height: 30),
-              //       Align(
-              //         alignment: Alignment.centerLeft,
-              //         child: Text(
-              //           "Inspiring Articles",
-              //           style: TextStyle(
-              //             fontSize: 20,
-              //             fontWeight: FontWeight.bold,
-              //           ),
-              //         ),
-              //       ),
-              //       SizedBox(height: 10),
-              //       ChatBot(),
-              //     ],
-              //   ),
-              // ),
               const SizedBox(height: 10),
               const Padding(
                 padding: EdgeInsets.all(1.0),
