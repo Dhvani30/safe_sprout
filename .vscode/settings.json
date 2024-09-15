@@ -1,3 +1,11 @@
 {
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "discord.detailsDebugging": "Debugging {empty}",
+    "discord.detailsEditing": "Editing {empty}",
+    "discord.lowerDetailsDebugging": "Debugging: {empty}",
+    "discord.lowerDetailsEditing": "Workspace: {empty}",
+    "discord.removeDetails": true,
+    "discord.removeLowerDetails": true,
+    "discord.removeRemoteRepository": true,
+    "discord.removeTimestamp": false
 }

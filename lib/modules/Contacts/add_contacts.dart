@@ -1,4 +1,3 @@
-import 'package:contacts_service/contacts_service.dart';
 import 'package:dice_app/database_helper.dart';
 import 'package:dice_app/modules/Contacts/contacts.dart';
 import 'package:dice_app/modules/Contacts/model/contactsm.dart';
@@ -20,7 +19,6 @@ class _AddContactsState extends State<AddContacts> {
   DatabaseHelper _databaseHelper = DatabaseHelper();
   List<TContact>? contactList;
   int count = 0;
-
   void showList() {
     Future<Database> dbFuture = _databaseHelper.initializeDatabase();
     dbFuture.then((database) {

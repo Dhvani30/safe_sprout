@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:dice_app/gradient_container.dart';
-import 'package:dice_app/firebase_options.dart';
-import 'package:dice_app/modules/home_page.dart'; // Import your home page
+import 'gradient_container.dart';
+import 'firebase_options.dart';
+import 'modules/home_page.dart'; // Import your home page
 import 'package:firebase_auth/firebase_auth.dart';
 
 void main() async {

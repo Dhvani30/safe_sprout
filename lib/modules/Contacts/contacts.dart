@@ -1,11 +1,9 @@
-import 'dart:ffi';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:dice_app/database_helper.dart';
 import 'package:dice_app/modules/Contacts/model/contactsm.dart';
 import 'package:flutter/material.dart';
 import 'package:contacts_service/contacts_service.dart';
 import 'package:dice_app/utils/constants.dart';
-import 'package:flutter/widgets.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter/services.dart';
 
