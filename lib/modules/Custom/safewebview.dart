@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class SafeWebView extends StatelessWidget {

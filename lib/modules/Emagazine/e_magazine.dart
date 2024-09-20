@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:dice_app/modules/Emagazine/article.dart';
 import 'package:dice_app/modules/Emagazine/consts.dart';
@@ -9,7 +8,7 @@ import 'package:intl/intl.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class EMagazine extends StatefulWidget {
-  const EMagazine({Key? key}) : super(key: key);
+  const EMagazine({super.key});
 
   @override
   State<EMagazine> createState() => _EMagazineState();
@@ -40,8 +39,7 @@ class _EMagazineState extends State<EMagazine> {
   }
 
   Widget _buildProgressIndicator() {
-    Color:
-    return Center(
+    return const Center(
       child: CircularProgressIndicator(),
     );
   }
@@ -59,17 +57,17 @@ class _EMagazineState extends State<EMagazine> {
 
         return Container(
           // color: Color.fromARGB(255, 251, 243, 245),
-          margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-          padding: EdgeInsets.all(8.0),
+          margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+          padding: const EdgeInsets.all(8.0),
           decoration: BoxDecoration(
-            color: Color.fromARGB(255, 215, 202, 232),
+            color: const Color.fromARGB(255, 215, 202, 232),
             borderRadius: BorderRadius.circular(10.0),
             boxShadow: [
               BoxShadow(
                 color: Colors.grey.withOpacity(0.5),
                 spreadRadius: 2,
                 blurRadius: 5,
-                offset: Offset(0, 3), // changes position of shadow
+                offset: const Offset(0, 3), // changes position of shadow
               ),
             ],
           ),

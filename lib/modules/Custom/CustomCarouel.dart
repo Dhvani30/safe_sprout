@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:dice_app/utils/quotes.dart';
 import 'package:dice_app/modules/Custom/safewebview.dart';
 import 'package:flutter/cupertino.dart';
+// import 'package:carousel_slider/carousel_slider.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
 class CustomCarouel extends StatelessWidget {
   const CustomCarouel({Key? key}) : super(key: key);

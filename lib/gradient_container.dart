@@ -8,8 +8,7 @@ const startAlign = Alignment.topCenter;
 const endAlign = Alignment.bottomCenter;
 
 class GradientContainer extends StatelessWidget {
-  const GradientContainer(this.color1, this.color2, this.color3, {Key? key})
-      : super(key: key);
+  const GradientContainer(this.color1, this.color2, this.color3, {super.key});
 
   final Color color1;
   final Color color2;
@@ -34,9 +33,9 @@ class GradientContainer extends StatelessWidget {
             Text(
               'SafeSprout',
               style: GoogleFonts.comfortaa(
-                textStyle: TextStyle(
+                textStyle: const TextStyle(
                   fontSize: 48,
-                  color: const Color.fromARGB(255, 0, 0, 0),
+                  color: Color.fromARGB(255, 0, 0, 0),
                 ),
               ),
             ),
@@ -58,15 +57,15 @@ class GradientContainer extends StatelessWidget {
                     //   side: BorderSide(color: Colors.black, width: 2),
                     // ),
                     elevation: 3,
-                    padding: EdgeInsets.fromLTRB(30, 15, 30, 15),
+                    padding: const EdgeInsets.fromLTRB(30, 15, 30, 15),
                     textStyle: GoogleFonts.comfortaa(
-                      textStyle: TextStyle(
+                      textStyle: const TextStyle(
                         fontSize: 20,
                         color: Colors.black,
                       ),
                     ),
                   ),
-                  child: Text('LOGIN'),
+                  child: const Text('LOGIN'),
                 ),
                 ElevatedButton(
                   onPressed: () {
@@ -82,15 +81,15 @@ class GradientContainer extends StatelessWidget {
                     //   side: BorderSide(color: Colors.black, width: 2),
                     // ),
                     elevation: 3,
-                    padding: EdgeInsets.fromLTRB(30, 15, 30, 15),
+                    padding: const EdgeInsets.fromLTRB(30, 15, 30, 15),
                     textStyle: GoogleFonts.comfortaa(
-                      textStyle: TextStyle(
+                      textStyle: const TextStyle(
                         fontSize: 20,
                         color: Colors.black,
                       ),
                     ),
                   ),
-                  child: Text('REGISTER'),
+                  child: const Text('REGISTER'),
                 ),
               ],
             ),

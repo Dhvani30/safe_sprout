@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:dice_app/utils/quotes.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class CustomAppBar extends StatelessWidget {
   // const CustomAppBar({super.key});
   Function? onTap;
   int? quoteIndex;
-  CustomAppBar({this.onTap, this.quoteIndex});
+  CustomAppBar({super.key, this.onTap, this.quoteIndex});
 
   @override
   Widget build(BuildContext context) {
@@ -14,12 +15,10 @@ class CustomAppBar extends StatelessWidget {
       onTap: () {
         onTap!();
       },
-      child: Container(
-        child: Text(
-          sweetSayings[quoteIndex!],
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-        ),
+      child: Text(
+        sweetSayings[quoteIndex!],
+        textAlign: TextAlign.center,
+        style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
       ),
     );
   }

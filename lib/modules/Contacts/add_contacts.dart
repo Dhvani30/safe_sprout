@@ -1,7 +1,6 @@
 import 'package:dice_app/database_helper.dart';
 import 'package:dice_app/modules/Contacts/contacts.dart';
 import 'package:dice_app/modules/Contacts/model/contactsm.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -9,14 +8,14 @@ import 'package:sqflite/sqflite.dart';
 import 'package:flutter/services.dart';
 
 class AddContacts extends StatefulWidget {
-  const AddContacts({Key? key}) : super(key: key);
+  const AddContacts({super.key});
 
   @override
   State<AddContacts> createState() => _AddContactsState();
 }
 
 class _AddContactsState extends State<AddContacts> {
-  DatabaseHelper _databaseHelper = DatabaseHelper();
+  final DatabaseHelper _databaseHelper = DatabaseHelper();
   List<TContact>? contactList;
   int count = 0;
   void showList() {
@@ -26,8 +25,8 @@ class _AddContactsState extends State<AddContacts> {
           _databaseHelper.getContactList();
       contactListFuture.then((value) {
         setState(() {
-          this.contactList = value;
-          this.count = value.length;
+          contactList = value;
+          count = value.length;
         });
       });
     });
@@ -43,30 +42,31 @@ class _AddContactsState extends State<AddContacts> {
 
   @override
   void initState() {
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       showList();
     });
     super.initState();
   }
 
+// @override
+//   void initState() {
+//     WidgetsBinding.instance!.addPostFrameCallback((_) {
+//       showList();
+//     });
+//     super.initState();
+//   }
+
   @override
   Widget build(BuildContext context) {
-    if (contactList == null) {
-      contactList = [];
-    }
+    contactList ??= [];
     return SafeArea(
       child: Container(
-        color: Color.fromARGB(255, 251, 243, 245),
+        color: const Color.fromARGB(255, 251, 243, 245),
         // color: const Color.fromARGB(255, 248, 245, 252),
-        padding: EdgeInsets.only(top: 25),
+        padding: const EdgeInsets.only(top: 25),
         child: Column(
           children: [
             ElevatedButton(
-              child: Text(
-                "Add Trusted Contacts",
-                style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-              ),
               style: ElevatedButton.styleFrom(
                   backgroundColor: Color.fromARGB(255, 215, 202, 232)),
               onPressed: () async {
@@ -79,6 +79,11 @@ class _AddContactsState extends State<AddContacts> {
                   showList();
                 }
               },
+              child: const Text(
+                "Add Trusted Contacts",
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              ),
             ),
             Expanded(
               child: ListView.builder(
@@ -89,7 +94,7 @@ class _AddContactsState extends State<AddContacts> {
                       padding: const EdgeInsets.all(8.0),
                       child: ListTile(
                         title: Text(contactList![index].name),
-                        trailing: Container(
+                        trailing: SizedBox(
                           width: 100,
                           child: Row(
                             children: [
@@ -99,7 +104,7 @@ class _AddContactsState extends State<AddContacts> {
                                   await FlutterPhoneDirectCaller.callNumber(
                                       contactList![index].number);
                                 },
-                                icon: Icon(Icons.call),
+                                icon: const Icon(Icons.call),
                                 color: Colors.red[600],
                               ),
                               IconButton(
@@ -107,7 +112,7 @@ class _AddContactsState extends State<AddContacts> {
                                   HapticFeedback.mediumImpact();
                                   deleteContact(contactList![index]);
                                 },
-                                icon: Icon(Icons.delete),
+                                icon: const Icon(Icons.delete),
                                 color: Colors.red[600],
                               ),
                             ],

@@ -10,6 +10,7 @@ class StyledText extends StatelessWidget {
     return Text(
       text,
       style: GoogleFonts.comfortaa(
+        // ignore: prefer_const_constructors
         textStyle: TextStyle(
           color: Colors.black,
           fontSize: 40,

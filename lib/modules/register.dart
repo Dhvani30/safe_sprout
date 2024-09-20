@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:dice_app/modules/home_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 
@@ -10,6 +9,8 @@ class RegisterPage extends StatelessWidget {
       TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
+  RegisterPage({super.key});
+
   void registerUser(BuildContext context) async {
     try {
       UserCredential userCredential =
@@ -18,7 +19,7 @@ class RegisterPage extends StatelessWidget {
         password: passwordController.text,
       );
 
-      if (userCredential != null && userCredential.user != null) {
+      if (userCredential.user != null) {
         // User registration successful, now save additional data to Firebase Database
         DatabaseReference userRef =
             FirebaseDatabase.instance.reference().child('users');
@@ -30,7 +31,7 @@ class RegisterPage extends StatelessWidget {
 
         // Show SnackBar message for registration success
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const SnackBar(
             content: Text('Registration successful'),
             duration: Duration(seconds: 1), // Optional duration
             backgroundColor: Colors.green, // Optional background color
@@ -38,7 +39,7 @@ class RegisterPage extends StatelessWidget {
         );
 
         // Delay navigation to give time for SnackBar to be shown
-        await Future.delayed(Duration(seconds: 2));
+        await Future.delayed(const Duration(seconds: 2));
 
         // Navigate back to the home page after registration
         Navigator.pop(context);
@@ -64,47 +65,47 @@ class RegisterPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 'Register',
                 style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextField(
                 controller: emailController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Email',
                   border: OutlineInputBorder(),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextField(
                 controller: collegeCodeController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'College Code',
                   border: OutlineInputBorder(),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextField(
                 controller: enrollmentNumberController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Enrollment Number',
                   border: OutlineInputBorder(),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextField(
                 controller: passwordController,
                 obscureText: true,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Password',
                   border: OutlineInputBorder(),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
@@ -112,7 +113,7 @@ class RegisterPage extends StatelessWidget {
                     // Register the user
                     registerUser(context);
                   },
-                  child: Text('REGISTER'),
+                  child: const Text('REGISTER'),
                 ),
               ),
             ],

@@ -1,13 +1,9 @@
-import 'package:dice_app/modules/FriendLocator/live_safe/BusStationCard.dart';
-import 'package:dice_app/modules/FriendLocator/live_safe/PoliceStationCard.dart';
-import 'package:dice_app/modules/FriendLocator/live_safe/HospitalCard.dart';
-import 'package:dice_app/modules/FriendLocator/live_safe/Pharmacy.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class LiveSafe extends StatelessWidget {
-  const LiveSafe({Key? key}) : super(key: key);
+  const LiveSafe({super.key});
 
   static Future<void> openMap(String location) async {
     String googleUrl = 'https://www.google.com/maps/search/$location';
@@ -37,7 +33,7 @@ class LiveSafe extends StatelessWidget {
               icon: 'assets/images/policeloc.jpg',
               label: '  Police Station  ',
             ),
-            SizedBox(height: 20), // Add vertical space between cards
+            const SizedBox(height: 20), // Add vertical space between cards
             _buildLocationCard(
               context,
               onTap: () {
@@ -46,7 +42,7 @@ class LiveSafe extends StatelessWidget {
               icon: 'assets/images/hospitalloc.jpg',
               label: '  Hospital  ',
             ),
-            SizedBox(height: 20), // Add vertical space between cards
+            const SizedBox(height: 20), // Add vertical space between cards
             _buildLocationCard(
               context,
               onTap: () {
@@ -55,7 +51,7 @@ class LiveSafe extends StatelessWidget {
               icon: 'assets/images/mediloc.jpg',
               label: '  Pharmacy  ',
             ),
-            SizedBox(height: 20), // Add vertical space between cards
+            const SizedBox(height: 20), // Add vertical space between cards
             _buildLocationCard(
               context,
               onTap: () {
@@ -94,7 +90,7 @@ class LiveSafe extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Color.fromARGB(255, 215, 202, 232),
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(20),
@@ -110,14 +106,14 @@ class LiveSafe extends StatelessWidget {
                       //     bottomLeft: Radius.circular(20),
                       //   ),
                       // ),
-                      padding: EdgeInsets.symmetric(
+                      padding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 8), // Adjust padding here
                       // color: Colors.blue,
                       child: Center(
                         child: Card(
                           elevation: 3,
                           child: Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(20),
@@ -129,8 +125,8 @@ class LiveSafe extends StatelessWidget {
                             child: Text(
                               label,
                               selectionColor:
-                                  Color.fromARGB(255, 215, 202, 232),
-                              style: TextStyle(
+                                  const Color.fromARGB(255, 215, 202, 232),
+                              style: const TextStyle(
                                 fontSize: 20, // Increase font size if needed
                               ),
                             ),

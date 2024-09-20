@@ -2,7 +2,7 @@ import 'package:dice_app/modules/FriendLocator/widgets/LiveSafe.dart';
 import 'package:flutter/material.dart';
 
 class FriendLocator extends StatelessWidget {
-  const FriendLocator({Key? key}) : super(key: key);
+  const FriendLocator({super.key});
 
   @override
   Widget build(BuildContext context) {

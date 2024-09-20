@@ -1,3 +1,5 @@
+// ignore_for_file: no_leading_underscores_for_local_identifiers
+
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:dice_app/database_helper.dart';
 import 'package:dice_app/modules/Contacts/model/contactsm.dart';
@@ -8,7 +10,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter/services.dart';
 
 class Contacts extends StatefulWidget {
-  const Contacts({Key? key}) : super(key: key);
+  const Contacts({super.key});
 
   @override
   State<Contacts> createState() => _ContactsState();
@@ -17,7 +19,7 @@ class Contacts extends StatefulWidget {
 class _ContactsState extends State<Contacts> {
   List<Contact> contacts = [];
   List<Contact> contactsFiltered = [];
-  DatabaseHelper _databaseHelper = DatabaseHelper();
+  final DatabaseHelper _databaseHelper = DatabaseHelper();
   TextEditingController searchController = TextEditingController();
   bool isLoading = false;
 
@@ -45,6 +47,7 @@ class _ContactsState extends State<Contacts> {
         filterContact();
       });
     } else {
+      // ignore: use_build_context_synchronously
       handleInvalidPermissions(context, permissionStatus);
     }
   }
@@ -53,8 +56,10 @@ class _ContactsState extends State<Contacts> {
     List<Contact> _contacts = await ContactsService.getContacts();
     _contacts = _contacts
         .where((contact) =>
-            contact.displayName?.isNotEmpty ??
-            false && contact.phones != null && contact.phones!.isNotEmpty)
+            (contact.displayName?.isNotEmpty ??
+                false) && // Properly grouped condition for displayName
+            contact.phones != null &&
+            contact.phones!.isNotEmpty) // Phones check
         .toList();
     setState(() {
       contacts = _contacts;
@@ -118,10 +123,10 @@ class _ContactsState extends State<Contacts> {
   @override
   Widget build(BuildContext context) {
     bool isSearchIng = searchController.text.isNotEmpty;
-    bool listItemExit = (contactsFiltered.length > 0 || contacts.length > 0);
+    bool listItemExit = (contactsFiltered.isNotEmpty || contacts.isNotEmpty);
     return Scaffold(
       body: isLoading
-          ? SafeArea(child: Center(child: CircularProgressIndicator()))
+          ? const SafeArea(child: Center(child: CircularProgressIndicator()))
           : Column(
               children: [
                 Padding(
@@ -129,7 +134,7 @@ class _ContactsState extends State<Contacts> {
                   child: TextField(
                     autofocus: true,
                     controller: searchController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: "Search Contacts",
                       prefixIcon: Icon(Icons.search),
                     ),
@@ -173,7 +178,7 @@ class _ContactsState extends State<Contacts> {
                                       : CircleAvatar(
                                           child: Text(contact.initials())),
                                   onTap: () {
-                                    if (contact.phones!.length > 0) {
+                                    if (contact.phones!.isNotEmpty) {
                                       HapticFeedback.mediumImpact();
                                       final String phoneNumber =
                                           contact.phones!.elementAt(0).value!;
@@ -191,9 +196,7 @@ class _ContactsState extends State<Contacts> {
                           },
                         ),
                       )
-                    : Container(
-                        child: Text("Searching"),
-                      ),
+                    : const Text("Searching"),
               ],
             ),
     );
