@@ -1,10 +1,15 @@
 Safe Sprout 🌱🚨
+
 A Smart Campus Safety App for Women
 
+
 🚀 Overview
+
 Safe Sprout is a fully functional safety application designed to enhance the security of women on campus. With real-time location tracking, instant SOS alerts, emergency contacts, anonymous chat, live news updates, and inspiring survivor stories, it provides a powerful, reliable, and easy-to-use safety solution.
 
+
 🌟 Features
+
 ✅ Login & Registration – Secure authentication for users 🔑
 
 ✅ Emergency Contacts Bar – Quick access to police, ambulance, fire department, and women’s security helplines 🚓🚑🔥
